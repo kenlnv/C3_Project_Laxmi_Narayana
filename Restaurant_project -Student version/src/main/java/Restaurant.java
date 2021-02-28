@@ -59,11 +59,18 @@ public class Restaurant {
                 +"Opening time:"+ openingTime +"\n"
                 +"Closing time:"+ closingTime +"\n"
                 +"Menu:"+"\n"+getMenu());
-
     }
 
     public String getName() {
         return name;
     }
 
+    public int calculateOrderSpend(String...items) {
+        int orderSpend = 0;
+        for(String item:items) {
+            orderSpend += findItemByName(item).getPrice();
+        }
+
+        return orderSpend;
+    }
 }

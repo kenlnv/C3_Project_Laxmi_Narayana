@@ -10,14 +10,12 @@ class RestaurantServiceTest {
 
     RestaurantService service = new RestaurantService();
     Restaurant restaurant;
-    //REFACTOR ALL THE REPEATED LINES OF CODE
 
     @BeforeEach
     public void setUp() {
         addRestaurantWithMenu();
     }
 
-    //>>>>>>>>>>>>>>>>>>>>>>SEARCHING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     @Test
     public void searching_for_existing_restaurant_should_return_expected_restaurant_object() throws restaurantNotFoundException {
         Restaurant restaurant = service.findRestaurantByName("Amelie's cafe");
@@ -29,8 +27,7 @@ class RestaurantServiceTest {
     public void searching_for_non_existing_restaurant_should_throw_exception() throws restaurantNotFoundException {
         assertThrows(restaurantNotFoundException.class,()-> service.findRestaurantByName("MTR"));
     }
-    //<<<<<<<<<<<<<<<<<<<<SEARCHING>>>>>>>>>>>>>>>>>>>>>>>>>>
-    //>>>>>>>>>>>>>>>>>>>>>>ADMIN: ADDING & REMOVING RESTAURANTS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
     @Test
     public void remove_restaurant_should_reduce_list_of_restaurants_size_by_1() throws restaurantNotFoundException {
         int initialNumberOfRestaurants = service.getRestaurants().size();
@@ -49,7 +46,6 @@ class RestaurantServiceTest {
         service.addRestaurant("Pumpkin Tales","Chennai",LocalTime.parse("12:00:00"),LocalTime.parse("23:00:00"));
         assertEquals(initialNumberOfRestaurants + 1,service.getRestaurants().size());
     }
-    //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     /*
         Method to add one restaurant with 2 menu items.
