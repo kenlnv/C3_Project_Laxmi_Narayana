@@ -53,6 +53,11 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
 
+    @Test
+    public void adding_items_to_find_out_user_spend_should_calculate_order_value() {
+        assertEquals(388, restaurant.calculateOrderSpend("Sweet corn soup","Vegetable lasagne"));
+    }
+
     /*
         Method to create one restaurant with 2 menu items.
      */
